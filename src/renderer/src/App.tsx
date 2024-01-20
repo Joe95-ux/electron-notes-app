@@ -21,12 +21,12 @@ const App = () => {
     <>
       <DraggableTopBar />
       <RootLayout>
-        <Sidebar className="p-2">
-          <ActionButtonsRow className="flex justify-between mt-1" />
+        <Sidebar className="p-2 bg-slate-900">
+          <ActionButtonsRow className="flex justify-between mt-1 mb-1" />
           <NotePreviewList className="mt-3 space-y-1" onSelect={resetScroll} />
         </Sidebar>
 
-        <Content ref={contentContainerRef} className="border-l bg-zinc-900/50 border-l-white/20">
+        <Content ref={contentContainerRef} className="border-l bg-sky-950 border-l-white/20">
           <FloatingNoteTitle className="pt-2" />
           <MarkdownEditor />
         </Content>
