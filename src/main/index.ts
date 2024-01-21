@@ -20,9 +20,11 @@ function createWindow(): void {
     // titleBarStyle: 'hidden',
     // trafficLightPosition: { x: 15, y: 10 },
     webPreferences: {
+      nodeIntegration: true,
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,
-      contextIsolation: true
+      contextIsolation: true,
+      devTools: true
     }
   })
 
