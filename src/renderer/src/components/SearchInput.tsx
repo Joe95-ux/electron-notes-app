@@ -1,14 +1,18 @@
 import { ComponentProps } from 'react'
-import { CiSearch } from 'react-icons/ci'
+import { IoSearch } from 'react-icons/io5'
 
 export const SearchInput = ({ ...props }: ComponentProps<'div'>) => {
   return (
     <div
       {...props}
-      className="flex w-full justify-between items-center mb-6 p-2 rounded ring-2 ring-slate-200/50 "
+      className="flex w-full justify-between items-center mb-6 px-2 py-1 rounded border border-slate-700"
     >
-      <CiSearch className="w-4 h-4 text-slate-400" />
-      <input type="text" className="w-full ml-2 outline-none border-none" />
+      <IoSearch className="w-7 h-7 text-slate-400" />
+      <input
+        type="text"
+        className="w-full ml-2 outline-none border-none bg-inherit"
+        placeholder="Quick search..."
+      />
     </div>
   )
 }
