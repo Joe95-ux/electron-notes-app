@@ -1,7 +1,12 @@
+import { notesAtom, searchAtom } from '@/store'
+import { useAtom, useAtomValue } from 'jotai'
 import { ComponentProps } from 'react'
 import { IoSearch } from 'react-icons/io5'
 
 export const SearchInput = ({ ...props }: ComponentProps<'div'>) => {
+  const notes = useAtomValue(notesAtom)
+  const [search, setSearch] = useAtom(searchAtom)
+
   return (
     <div
       {...props}
