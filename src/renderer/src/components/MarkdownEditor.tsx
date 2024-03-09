@@ -1,18 +1,27 @@
 import {
+  BoldItalicUnderlineToggles,
   ChangeCodeMirrorLanguage,
   ConditionalContents,
+  CreateLink,
   InsertCodeBlock,
+  InsertImage,
   InsertSandpack,
+  InsertTable,
+  ListsToggle,
   MDXEditor,
   SandpackConfig,
   ShowSandpackInfo,
+  UndoRedo,
   codeBlockPlugin,
   codeMirrorPlugin,
   headingsPlugin,
+  imagePlugin,
+  linkDialogPlugin,
   listsPlugin,
   markdownShortcutPlugin,
   quotePlugin,
   sandpackPlugin,
+  tablePlugin,
   toolbarPlugin
 } from '@mdxeditor/editor'
 import { useMarkdownEditor } from '@renderer/hooks/useMarkdownEditor'
@@ -41,7 +50,7 @@ export const MarkdownEditor = () => {
         name: 'react',
         meta: 'live react',
         sandpackTemplate: 'react',
-        sandpackTheme: 'light',
+        sandpackTheme: 'dark',
         snippetFileName: '/App.js',
         snippetLanguage: 'jsx',
         initialSnippetContent: defaultSnippetContent
@@ -61,6 +70,17 @@ export const MarkdownEditor = () => {
         listsPlugin(),
         quotePlugin(),
         markdownShortcutPlugin(),
+        tablePlugin(),
+        linkDialogPlugin(),
+        imagePlugin({
+          imageUploadHandler: () => {
+            return Promise.resolve('https://picsum.photos/200/300')
+          },
+          imageAutocompleteSuggestions: [
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200'
+          ]
+        }),
         codeBlockPlugin({ defaultCodeBlockLanguage: 'js' }),
         sandpackPlugin({ sandpackConfig: simpleSandpackConfig }),
         codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', css: 'CSS' } }),
@@ -81,6 +101,12 @@ export const MarkdownEditor = () => {
                     <>
                       <InsertCodeBlock />
                       <InsertSandpack />
+                      <InsertTable />
+                      <CreateLink />
+                      <UndoRedo />
+                      <BoldItalicUnderlineToggles />
+                      <InsertImage />
+                      <ListsToggle />
                     </>
                   )
                 }
