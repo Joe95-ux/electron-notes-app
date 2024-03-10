@@ -28,7 +28,7 @@ const App = () => {
           <NotePreviewList className="mt-3 space-y-1" onSelect={resetScroll} />
         </Sidebar>
 
-        <Content ref={contentContainerRef} className="border-l bg-sky-950 border-l-white/20">
+        <Content ref={contentContainerRef} className="border-l bg-sky-950 border-l-white/20 p-2">
           <FloatingNoteTitle className="pt-2" />
           <MarkdownEditor />
         </Content>

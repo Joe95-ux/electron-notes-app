@@ -24,6 +24,7 @@ import {
   tablePlugin,
   toolbarPlugin
 } from '@mdxeditor/editor'
+import '@mdxeditor/editor/style.css'
 import { useMarkdownEditor } from '@renderer/hooks/useMarkdownEditor'
 
 export const MarkdownEditor = () => {
@@ -64,6 +65,7 @@ export const MarkdownEditor = () => {
       key={selectedNote.title}
       markdown={selectedNote.content}
       onChange={handleAutoSaving}
+      className="dark-theme dark-editor"
       onBlur={handleBlur}
       plugins={[
         headingsPlugin(),
@@ -83,7 +85,9 @@ export const MarkdownEditor = () => {
         }),
         codeBlockPlugin({ defaultCodeBlockLanguage: 'js' }),
         sandpackPlugin({ sandpackConfig: simpleSandpackConfig }),
-        codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', css: 'CSS' } }),
+        codeMirrorPlugin({
+          codeBlockLanguages: { js: 'JavaScript', css: 'CSS', txt: 'text', tsx: 'TypeScript' }
+        }),
         toolbarPlugin({
           toolbarContents: () => (
             <ConditionalContents

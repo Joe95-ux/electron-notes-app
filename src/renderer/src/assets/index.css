@@ -28,6 +28,15 @@
     -webkit-app-region: no-drag;
   }
 
+  .mdxeditor-toolbar {
+    @apply bg-slate-700 !important;
+    @apply p-2 !important;
+    @apply rounded !important;
+    @apply gap-2 !important;
+    @apply mx-2 !important;
+    width: max-content;
+  }
+
   ::-webkit-scrollbar {
     @apply w-2;
   }
