@@ -1,8 +1,19 @@
-import { notesAtom, selectedNoteIndexAtom } from '@/store'
+import { notesAtom, searchAtom, selectedNoteIndexAtom } from '@/store'
 import { useAtom, useAtomValue } from 'jotai'
 
-export const useNotesList = ({ onSelect }: { onSelect?: () => void }) => {
-  const notes = useAtomValue(notesAtom)
+interface UseNotesListProps {
+  onSelect?: () => void
+}
+
+export const useNotesList = ({ onSelect }: UseNotesListProps) => {
+  let notes = useAtomValue(notesAtom)
+  const [searchTerm, setSearchTerm] = useAtom(searchAtom)
+
+  if (searchTerm !== null || searchTerm !== '') {
+    notes = notes?.filter((note) =>
+      note.title.toLocaleLowerCase().includes(searchTerm.toLowerCase())
+    )
+  }
 
   const [selectedNoteIndex, setSelectedNoteIndex] = useAtom(selectedNoteIndexAtom)
 

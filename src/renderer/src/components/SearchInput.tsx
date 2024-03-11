@@ -17,6 +17,7 @@ export const SearchInput = ({ ...props }: ComponentProps<'div'>) => {
         type="text"
         className="w-full ml-2 outline-none border-none bg-inherit"
         placeholder="Quick search..."
+        onChange={(e) => setSearch(e.target.value)}
       />
     </div>
   )
